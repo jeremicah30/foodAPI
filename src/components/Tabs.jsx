@@ -1,19 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
-import { setFoodType } from "../Redux/store";
+import { setFoodType } from "../Redux/foodType";
 
 const Tabs = () => {
   const dispatch = useDispatch();
-  const { foodType } = useSelector((state) => state.foodType);
-
-  console.log(foodType, "uu");
+  const [openTab, setOpenTab] = useState(1);
+  const menuItems = useSelector((state) => state.foodMenu.menuItems);
+  const foodData = menuItems.results;
 
   const handleFoodTypeChange = (type) => {
     dispatch(setFoodType(type));
   };
 
-  const [openTab, setOpenTab] = React.useState(1);
   return (
     <>
       <div className="flex flex-wrap">
@@ -82,42 +82,173 @@ const Tabs = () => {
                 Cake
               </Link>
             </li>
+            <li className="-mb-px mr-2 last:mr-0 flex-auto text-center">
+              <Link
+                className={
+                  "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal " +
+                  (openTab === 4
+                    ? "text-white bg-blueGray-600"
+                    : "text-blueGray-600 bg-white")
+                }
+                onClick={(e) => {
+                  e.preventDefault();
+                  setOpenTab(4);
+                  handleFoodTypeChange("salad");
+                }}
+                data-toggle="tab"
+                href="#link4"
+                role="tablist"
+              >
+                Salad
+              </Link>
+            </li>
+            <li className="-mb-px mr-2 last:mr-0 flex-auto text-center">
+              <Link
+                className={
+                  "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal " +
+                  (openTab === 5
+                    ? "text-white bg-blueGray-600"
+                    : "text-blueGray-600 bg-white")
+                }
+                onClick={(e) => {
+                  e.preventDefault();
+                  setOpenTab(5);
+                  handleFoodTypeChange("fruit");
+                }}
+                data-toggle="tab"
+                href="#link5"
+                role="tablist"
+              >
+                Fruits
+              </Link>
+            </li>
+            <li className="-mb-px mr-2 last:mr-0 flex-auto text-center">
+              <Link
+                className={
+                  "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal " +
+                  (openTab === 6
+                    ? "text-white bg-blueGray-600"
+                    : "text-blueGray-600 bg-white")
+                }
+                onClick={(e) => {
+                  e.preventDefault();
+                  setOpenTab(6);
+                  handleFoodTypeChange("vegetable");
+                }}
+                data-toggle="tab"
+                href="#link6"
+                role="tablist"
+              >
+                Veggie
+              </Link>
+            </li>
           </ul>
-          <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
-            <div className="px-4 py-5 flex-auto">
-              <div className="tab-content tab-space">
-                <div className={openTab === 1 ? "block" : "hidden"} id="link1">
-                  <p>
-                    Collaboratively administrate empowered markets via
-                    plug-and-play networks. Dynamically procrastinate B2C users
-                    after installed base benefits.
-                    <br />
-                    <br /> Dramatically visualize customer directed convergence
-                    without revolutionary ROI.
-                  </p>
-                </div>
-                <div className={openTab === 2 ? "block" : "hidden"} id="link2">
-                  <p>
-                    Completely synergize resource taxing relationships via
-                    premier niche markets. Professionally cultivate one-to-one
-                    customer service with robust ideas.
-                    <br />
-                    <br />
-                    Dynamically innovate resource-leveling customer service for
-                    state of the art customer service.
-                  </p>
-                </div>
-                <div className={openTab === 3 ? "block" : "hidden"} id="link3">
-                  <p>
-                    Efficiently unleash cross-media information without
-                    cross-media value. Quickly maximize timely deliverables for
-                    real-time schemas.
-                    <br />
-                    <br /> Dramatically maintain clicks-and-mortar solutions
-                    without functional solutions.
-                  </p>
-                </div>
-              </div>
+          <div className="relative min-w-0 break-words bg-red-400  mb-6 shadow-lg rounded">
+            <div className="px-4 py-5 flex-auto grid gap-4 grid-cols-4 ">
+              {Array.isArray(foodData)
+                ? foodData.map((f) => {
+                    return (
+                      <div className="tab-content tab-space">
+                        <div
+                          className={openTab === 1 ? "block" : "hidden"}
+                          id="link1"
+                        >
+                          <ul>
+                            <li>
+                              <Image
+                                src={f.image}
+                                width={400}
+                                height={400}
+                                alt="Food Image"
+                              />
+                              <p>{f.title}</p>
+                            </li>
+                          </ul>
+                        </div>
+                        <div
+                          className={openTab === 2 ? "block" : "hidden"}
+                          id="link2"
+                        >
+                          <ul>
+                            <li>
+                              <Image
+                                src={f.image}
+                                width={400}
+                                height={400}
+                                alt="Food Image"
+                              />
+                              <p>{f.title}</p>
+                            </li>
+                          </ul>
+                        </div>
+                        <div
+                          className={openTab === 3 ? "block" : "hidden"}
+                          id="link3"
+                        >
+                          <ul>
+                            <li>
+                              <Image
+                                src={f.image}
+                                width={400}
+                                height={400}
+                                alt="Food Image"
+                              />
+                              <p>{f.title}</p>
+                            </li>
+                          </ul>
+                        </div>
+                        <div
+                          className={openTab === 4 ? "block" : "hidden"}
+                          id="link4"
+                        >
+                          <ul>
+                            <li>
+                              <Image
+                                src={f.image}
+                                width={400}
+                                height={400}
+                                alt="Food Image"
+                              />
+                              <p>{f.title}</p>
+                            </li>
+                          </ul>
+                        </div>
+                        <div
+                          className={openTab === 5 ? "block" : "hidden"}
+                          id="link5"
+                        >
+                          <ul>
+                            <li>
+                              <Image
+                                src={f.image}
+                                width={400}
+                                height={400}
+                                alt="Food Image"
+                              />
+                              <p>{f.title}</p>
+                            </li>
+                          </ul>
+                        </div>
+                        <div
+                          className={openTab === 6 ? "block" : "hidden"}
+                          id="link6"
+                        >
+                          <ul>
+                            <li>
+                              <Image
+                                src={f.image}
+                                width={400}
+                                height={400}
+                                alt="Food Image"
+                              />
+                              <p>{f.title}</p>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    );
+                  })
+                : null}
             </div>
           </div>
         </div>

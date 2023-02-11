@@ -1,25 +1,29 @@
 import Head from "next/head";
 import { Banner, Tabs } from "@/components";
 import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { setLoading, setMenu, setError } from "../Redux/menu";
 
 export default function Home({ apiKey }) {
-  const [recipess, setRecipess] = useState([]);
-  const [foodType, setFoodType] = useState("");
+  const { foodType } = useSelector((state) => state.foodType);
+
+  // const [recipess, setRecipess] = useState([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch(
-        `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&query=${foodType}`
-      );
-
-      const data = await response.json();
-      setRecipess(data.results);
-    };
-
-    fetchData();
-  }, [apiKey, foodType]);
-
-  console.log(recipess, "pp");
+    dispatch(setLoading());
+    fetch(
+      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&query=${foodType}`
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data, "=");
+        dispatch(setMenu(data));
+      })
+      .catch((error) => {
+        dispatch(setError(error));
+      });
+  }, [apiKey, foodType, setMenu]);
 
   return (
     <>
@@ -31,13 +35,7 @@ export default function Home({ apiKey }) {
       </Head>
       <main style={{ width: "calc(100% - 85px)", marginLeft: "auto" }}>
         <Banner />
-        <Tabs setFoodType={setFoodType} />
-
-        {Array.isArray(recipess)
-          ? recipess.map((n) => {
-              return <p key={n.id}>{n.title}</p>;
-            })
-          : null}
+        <Tabs />
       </main>
     </>
   );
