@@ -3,6 +3,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import { setFoodType } from "../Redux/foodType";
+import getRecipeInformation from "@/datas/getRecipeInformation";
+import { getRecipeInfo } from "@/Redux/recipeInfo";
 
 const Tabs = () => {
   const dispatch = useDispatch();
@@ -143,25 +145,32 @@ const Tabs = () => {
               </Link>
             </li>
           </ul>
-          <div className="relative min-w-0 break-words bg-red-400  mb-6 shadow-lg rounded">
-            <div className="px-4 py-5 flex-auto grid gap-4 grid-cols-4 ">
+          <div className="relative min-w-0 break-words mb-6 shadow-lg rounded">
+            <div className="px-4 py-5 grid gap-4 grid-cols-4 ">
               {Array.isArray(foodData)
                 ? foodData.map((f) => {
                     return (
                       <div className="tab-content tab-space" key={f.id}>
                         <div
-                          className={openTab === 1 ? "block" : "hidden"}
+                          className={openTab === 1 ? "block " : "hidden"}
                           id="link1"
                         >
                           <ul>
                             <li>
-                              <Image
-                                src={f.image}
-                                width={400}
-                                height={400}
-                                alt="Food Image"
-                              />
-                              <p>{f.title}</p>
+                              <Link href={`/recipe/${f.id}`}>
+                                <Image
+                                  src={f.image}
+                                  width={400}
+                                  height={400}
+                                  alt="Food Image"
+                                  onClick={() => {
+                                    getRecipeInformation(f.id);
+                                    dispatch(getRecipeInfo(f.id));
+                                  }}
+                                  className="cursor-pointer"
+                                />
+                                <p>{f.title}</p>
+                              </Link>
                             </li>
                           </ul>
                         </div>
@@ -171,13 +180,19 @@ const Tabs = () => {
                         >
                           <ul>
                             <li>
-                              <Image
-                                src={f.image}
-                                width={400}
-                                height={400}
-                                alt="Food Image"
-                              />
-                              <p>{f.title}</p>
+                              <Link href={`/recipe/${f.id}`}>
+                                <Image
+                                  src={f.image}
+                                  width={400}
+                                  height={400}
+                                  alt="Food Image"
+                                  onClick={() => {
+                                    getRecipeInformation(f.id);
+                                  }}
+                                  className="cursor-pointer"
+                                />
+                                <p>{f.title}</p>
+                              </Link>
                             </li>
                           </ul>
                         </div>
@@ -187,13 +202,19 @@ const Tabs = () => {
                         >
                           <ul>
                             <li>
-                              <Image
-                                src={f.image}
-                                width={400}
-                                height={400}
-                                alt="Food Image"
-                              />
-                              <p>{f.title}</p>
+                              <Link href={`/recipe/${f.id}`}>
+                                <Image
+                                  src={f.image}
+                                  width={400}
+                                  height={400}
+                                  alt="Food Image"
+                                  onClick={() => {
+                                    getRecipeInformation(f.id);
+                                  }}
+                                  className="cursor-pointer"
+                                />
+                                <p>{f.title}</p>
+                              </Link>
                             </li>
                           </ul>
                         </div>
@@ -203,13 +224,19 @@ const Tabs = () => {
                         >
                           <ul>
                             <li>
-                              <Image
-                                src={f.image}
-                                width={400}
-                                height={400}
-                                alt="Food Image"
-                              />
-                              <p>{f.title}</p>
+                              <Link href={`/recipe/${f.id}`}>
+                                <Image
+                                  src={f.image}
+                                  width={400}
+                                  height={400}
+                                  alt="Food Image"
+                                  onClick={() => {
+                                    getRecipeInformation(f.id);
+                                  }}
+                                  className="cursor-pointer"
+                                />
+                                <p>{f.title}</p>
+                              </Link>
                             </li>
                           </ul>
                         </div>
@@ -219,13 +246,20 @@ const Tabs = () => {
                         >
                           <ul>
                             <li>
-                              <Image
-                                src={f.image}
-                                width={400}
-                                height={400}
-                                alt="Food Image"
-                              />
-                              <p>{f.title}</p>
+                              <Link href={`/recipe/${f.id}`}>
+                                <Image
+                                  src={f.image}
+                                  width={400}
+                                  height={400}
+                                  alt="Food Image"
+                                  onClick={() => {
+                                    getRecipeInformation(f.id);
+                                    dispatch(getRecipeInfo(f.id));
+                                  }}
+                                  className="cursor-pointer"
+                                />
+                                <p>{f.title}</p>
+                              </Link>
                             </li>
                           </ul>
                         </div>
@@ -235,13 +269,19 @@ const Tabs = () => {
                         >
                           <ul>
                             <li>
-                              <Image
-                                src={f.image}
-                                width={400}
-                                height={400}
-                                alt="Food Image"
-                              />
-                              <p>{f.title}</p>
+                              <Link href={`/recipe/${f.id}`}>
+                                <Image
+                                  src={f.image}
+                                  width={400}
+                                  height={400}
+                                  alt="Food Image"
+                                  onClick={() => {
+                                    getRecipeInformation(f.id);
+                                  }}
+                                  className="cursor-pointer"
+                                />
+                                <p>{f.title}</p>
+                              </Link>
                             </li>
                           </ul>
                         </div>

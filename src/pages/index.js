@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { Banner, Tabs } from "@/components";
+import { Banner, Tabs, Trending } from "@/components";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setLoading, setMenu, setError } from "../Redux/menu";
@@ -23,7 +23,7 @@ export default function Home({ apiKey }) {
       .catch((error) => {
         dispatch(setError(error));
       });
-  }, [apiKey, foodType, setMenu]);
+  }, [apiKey, dispatch, foodType]);
 
   return (
     <>
@@ -33,9 +33,10 @@ export default function Home({ apiKey }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/tab-logo.svg" />
       </Head>
-      <main style={{ width: "calc(100% - 85px)", marginLeft: "auto" }}>
+      <main>
         <Banner />
         <Tabs />
+        <Trending />
       </main>
     </>
   );
@@ -59,7 +60,7 @@ export default function Home({ apiKey }) {
 export const getServerSideProps = async () => {
   return {
     props: {
-      apiKey: process.env.NEXT_APP_API_KEY,
+      apiKey: process.env.NEXT_PUBLIC_APP_API_KEY,
     },
   };
 };

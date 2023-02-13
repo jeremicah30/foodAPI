@@ -17,7 +17,7 @@ module.exports = {
         dirty: "#FDFDF9",
       },
       margin: {
-        mainM: "120px",
+        mainM: "85px",
       },
       padding: {
         mainP: "2rem",
