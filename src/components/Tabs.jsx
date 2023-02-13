@@ -148,7 +148,7 @@ const Tabs = () => {
               {Array.isArray(foodData)
                 ? foodData.map((f) => {
                     return (
-                      <div className="tab-content tab-space">
+                      <div className="tab-content tab-space" key={f.id}>
                         <div
                           className={openTab === 1 ? "block" : "hidden"}
                           id="link1"
