@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import { setFoodType } from "../Redux/foodType";
-import getRecipeInformation from "@/datas/getRecipeInformation";
+// import getRecipeInformation from "@/datas/getRecipeInformation";
 import { getRecipeInfo } from "@/Redux/recipeInfo";
 
 const Tabs = () => {
@@ -164,7 +164,6 @@ const Tabs = () => {
                                   height={400}
                                   alt="Food Image"
                                   onClick={() => {
-                                    getRecipeInformation(f.id);
                                     dispatch(getRecipeInfo(f.id));
                                   }}
                                   className="cursor-pointer"
@@ -187,7 +186,7 @@ const Tabs = () => {
                                   height={400}
                                   alt="Food Image"
                                   onClick={() => {
-                                    getRecipeInformation(f.id);
+                                    dispatch(getRecipeInfo(f.id));
                                   }}
                                   className="cursor-pointer"
                                 />
@@ -209,7 +208,7 @@ const Tabs = () => {
                                   height={400}
                                   alt="Food Image"
                                   onClick={() => {
-                                    getRecipeInformation(f.id);
+                                    dispatch(getRecipeInfo(f.id));
                                   }}
                                   className="cursor-pointer"
                                 />
@@ -231,7 +230,7 @@ const Tabs = () => {
                                   height={400}
                                   alt="Food Image"
                                   onClick={() => {
-                                    getRecipeInformation(f.id);
+                                    dispatch(getRecipeInfo(f.id));
                                   }}
                                   className="cursor-pointer"
                                 />
@@ -253,7 +252,6 @@ const Tabs = () => {
                                   height={400}
                                   alt="Food Image"
                                   onClick={() => {
-                                    getRecipeInformation(f.id);
                                     dispatch(getRecipeInfo(f.id));
                                   }}
                                   className="cursor-pointer"
@@ -276,7 +274,7 @@ const Tabs = () => {
                                   height={400}
                                   alt="Food Image"
                                   onClick={() => {
-                                    getRecipeInformation(f.id);
+                                    dispatch(getRecipeInfo(f.id));
                                   }}
                                   className="cursor-pointer"
                                 />
