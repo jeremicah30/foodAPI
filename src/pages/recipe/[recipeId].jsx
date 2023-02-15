@@ -53,19 +53,19 @@ const SingleRecipeInfo = () => {
               />
             </div>
 
-            <div className=" flex flex-col gap-y-3  py-5">
+            <div className="flex flex-col gap-y-3  py-5">
               {recipeData.veryPopular === true ? (
                 <p className=" bg-red-500 text-white w-fit px-2 py-1 rounded-md font-semibold">
                   🔥 POPULAR
                 </p>
               ) : null}
-              <ul className="flex">
+              <ul className="flex flex-wrap ">
                 {Array.isArray(recipeData.dishTypes)
                   ? recipeData.dishTypes.map((r, i) => {
                       return (
                         <li
                           key={i}
-                          className="rounded-full border border-orange-200 text-center py-1 px-2 mr-2"
+                          className="rounded-full border border-orange-200 text-center py-1 px-2 mr-2 mb-2"
                         >
                           {r}
                         </li>
