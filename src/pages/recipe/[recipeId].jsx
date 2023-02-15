@@ -10,6 +10,10 @@ const SingleRecipeInfo = () => {
   const summary = recipeData?.summary;
   const strippedText = summary?.replace(/(<([^>]+)>)/gi, "");
 
+  useEffect(() => {
+    getRecipe();
+  }, []);
+
   const getRecipe = async () => {
     try {
       const response = await axios.get(
@@ -22,50 +26,59 @@ const SingleRecipeInfo = () => {
     }
   };
 
-  useEffect(() => {
-    getRecipe();
-  }, []);
-
   console.log(recipeData, "ppp");
 
   if (recipeData) {
     return (
-      <div className="sinlgle-recipe h-full py-24">
+      <div className="single-recipe" style={{ height: "100vh" }}>
         <div className="inner flex">
-          <div className="left w-30">
-            <div className="h-40">
+          <div className="left w-60 flex flex-col  px-10"></div>
+
+          <div
+            className="right w-40 bg-white flex flex-col items-center px-20"
+            style={{
+              boxShadow: "  0px 0px 16px -2px rgba(189,189,189,0.75",
+              height: "100vh",
+            }}
+          >
+            <div
+              className="relative"
+              style={{ height: "430px", width: "100%" }}
+            >
               <Image
                 src={recipeData.image}
-                width={500}
-                height={500}
+                layout="fill"
+                objectPosition="center"
                 alt="Food Image"
               />
             </div>
-          </div>
 
-          <div className="right w-60 grid gap-y-3">
-            {recipeData.veryPopular === true ? (
-              <p className=" bg-red-500 text-white w-fit px-2 py-1 rounded-md font-semibold">
-                🔥 POPULAR
-              </p>
-            ) : null}
-            <ul className="flex">
-              {Array.isArray(recipeData.dishTypes)
-                ? recipeData.dishTypes.map((r, i) => {
-                    return (
-                      <li
-                        key={i}
-                        className="rounded-full border border-orange-200 text-center py-1 px-2 mr-2"
-                      >
-                        {r}
-                      </li>
-                    );
-                  })
-                : null}
-            </ul>
+            <div className=" flex flex-col gap-y-3  py-5">
+              {recipeData.veryPopular === true ? (
+                <p className=" bg-red-500 text-white w-fit px-2 py-1 rounded-md font-semibold">
+                  🔥 POPULAR
+                </p>
+              ) : null}
+              <ul className="flex">
+                {Array.isArray(recipeData.dishTypes)
+                  ? recipeData.dishTypes.map((r, i) => {
+                      return (
+                        <li
+                          key={i}
+                          className="rounded-full border border-orange-200 text-center py-1 px-2 mr-2"
+                        >
+                          {r}
+                        </li>
+                      );
+                    })
+                  : null}
+              </ul>
 
-            <p className="text-3xl">{recipeData.title}</p>
-            <p className="text-3xl">{strippedText}</p>
+              <h2 style={{ fontSize: "42px", fontFamily: "math, serif" }}>
+                {recipeData.title}
+              </h2>
+              <p>{strippedText}</p>
+            </div>
           </div>
         </div>
       </div>
