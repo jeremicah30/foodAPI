@@ -1,0 +1,7 @@
+.image-title {
+  transition: width 2s, height 2s, transform 2s;
+
+  &:hover {
+    transform: rotate(180deg);
+  }
+}

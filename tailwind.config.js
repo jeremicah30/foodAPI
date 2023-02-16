@@ -29,10 +29,18 @@ module.exports = {
         40: "40%",
         30: "30%",
       },
+      height: {
+        mainHs: "90%",
+        60: "60%",
+        50: "50%",
+        40: "40%",
+        30: "30%",
+      },
     },
     container: {
+      center: true,
       padding: {
-        DEFAULT: "2rem",
+        DEFAULT: "1rem",
       },
     },
     fontSize: {

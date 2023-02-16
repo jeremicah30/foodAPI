@@ -1,11 +1,16 @@
-// .banner {
-//   height: 40vh;
-//   .image {
-//     background: url("/bg.jpg");
-//     background-size: cover;
-//     background-repeat: no-repeat;
-//     background-position: center center;
-//     border-radius: 20px;
-//     width: "100%";
-//   }
-// }
+.banner {
+  .parent {
+    width: 400px;
+    height: 500px;
+    position: relative;
+    left: 50px;
+    top: 100px;
+    overflow: hidden;
+    .child {
+      max-width: 100%;
+      max-height: 100%;
+      display: block;
+      margin: 0 auto;
+    }
+  }
+}

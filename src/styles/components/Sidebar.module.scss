@@ -1,83 +1,22 @@
 .sidebar {
-  height: 100vh;
-  width: 85px;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  transition: 0.5s;
-  overflow-x: hidden;
-  white-space: nowrap;
-  box-shadow: 0 0px 30px 0 rgb(116 52 9 / 5%);
-
-  &:hover {
-    width: 16.2rem;
-
-    ul {
-      padding: 0 20px;
-      transition: ease-out 0.6s;
-    }
-
-    .li-title {
-      opacity: 1;
-      margin-left: 0px;
-      padding: 0 10px;
-      transition: ease-out 0.6s;
-      filter: blur(0);
-    }
-
-    .logo {
-      .img1 {
-        display: none;
-        transition: ease-out 0.6s;
-      }
-
-      .img2 {
-        display: block;
-        opacity: 1;
-        margin-left: 0px;
-        padding: 0 10px;
-        transition: ease-out 0.3s;
-        filter: blur(0);
-      }
-    }
-  }
-
-  .logo {
+  box-shadow: 0px 6px 11px 0px rgba(224, 224, 224, 0.75);
+  -webkit-box-shadow: 0px 6px 11px 0px rgba(224, 224, 224, 0.75);
+  -moz-box-shadow: 0px 6px 11px 0px rgba(224, 224, 224, 0.75);
+  &--logo {
     .img2 {
-      opacity: 0;
-      margin-left: -80px;
-      filter: blur(1.5rem);
+      width: 200px;
     }
   }
 
   ul {
-    padding: 0 20px;
-    transition: ease-out 0.6s;
+    text-align: center;
+    padding: 0 10px;
 
     li {
-      margin: auto;
-      text-decoration: none;
-      font-size: 25px;
-      color: #818181;
-      display: block;
-      transition: ease-out 0.6s;
-      padding: 8px;
-      border-radius: 200px;
-
-      span {
-        opacity: 0;
-        margin-left: -80px;
-        font-size: 1rem;
-        filter: blur(1.5rem);
-      }
-
+      padding: 0 20px;
       &:hover {
-        color: white;
-        transition: 0.1s;
-        background-color: #68b984;
-        padding: 8px;
-        border-radius: 200px;
+        border: none;
+        border-bottom: 2px solid orange;
       }
     }
   }
