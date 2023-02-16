@@ -61,6 +61,11 @@ module.exports = {
     },
     backgroundImage: {
       banner: "url('/bg-1.jpg')",
+      slide1: "url('/slide1.jpg')",
+      slide2: "url('/slide2.jpg')",
+      slide3: "url('/slide3.jpg')",
+      slide4: "url('/slide4.jpg')",
+      slide5: "url('/slide5.jpg')",
     },
   },
   plugins: [require("tw-elements/dist/plugin")],

@@ -5,3 +5,16 @@
     transform: rotate(180deg);
   }
 }
+
+.tab {
+  .title {
+    padding-top: 8px;
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
+  &:hover {
+    color: #ff8b13;
+    transition: 0.2s ease-in;
+    margin-bottom: 5px;
+  }
+}

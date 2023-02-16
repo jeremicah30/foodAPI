@@ -193,7 +193,7 @@ const Tabs = () => {
                   ? foodData.map((f) => {
                       return (
                         <div
-                          className="tab-content tab-space flex justify-center text-center bg-white py-5 rounded-md"
+                          className="tab tab-content tab-space flex justify-center text-center bg-white py-5 rounded-md"
                           key={f.id}
                         >
                           <div
@@ -213,7 +213,7 @@ const Tabs = () => {
                                     }}
                                     className="cursor-pointer"
                                   />
-                                  <p>{f.title}</p>
+                                  <p className="title">{f.title}</p>
                                 </Link>
                               </li>
                             </ul>
@@ -235,7 +235,7 @@ const Tabs = () => {
                                     }}
                                     className="cursor-pointer"
                                   />
-                                  <p>{f.title}</p>
+                                  <p className="title">{f.title}</p>
                                 </Link>
                               </li>
                             </ul>
@@ -257,7 +257,7 @@ const Tabs = () => {
                                     }}
                                     className="cursor-pointer"
                                   />
-                                  <p>{f.title}</p>
+                                  <p className="title">{f.title}</p>
                                 </Link>
                               </li>
                             </ul>
@@ -279,7 +279,7 @@ const Tabs = () => {
                                     }}
                                     className="cursor-pointer"
                                   />
-                                  <p>{f.title}</p>
+                                  <p className="title">{f.title}</p>
                                 </Link>
                               </li>
                             </ul>
@@ -301,7 +301,7 @@ const Tabs = () => {
                                     }}
                                     className="cursor-pointer"
                                   />
-                                  <p>{f.title}</p>
+                                  <p className="title">{f.title}</p>
                                 </Link>
                               </li>
                             </ul>
