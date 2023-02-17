@@ -4,9 +4,7 @@ import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import { setFoodType } from "../Redux/foodType";
 import { getRecipeInfo } from "@/Redux/recipeInfo";
-
 import { Pasta, Salad, Cake, Burger2, Veggie, Fruits } from "public";
-import menu from "@/Redux/menu";
 
 const Tabs = () => {
   const dispatch = useDispatch();
@@ -24,7 +22,7 @@ const Tabs = () => {
     <>
       <div className="flex flex-wrap">
         <div className="container">
-          <div className="w-full">
+          <div className="w-full shadow-lg py-16">
             <ul
               className="flex justify-evenly mb-0 list-none flex-wrap pt-3 pb-4 flex-row"
               role="tablist"
@@ -32,7 +30,7 @@ const Tabs = () => {
               <li className="-mb-px mr-2 last:mr-0  text-center">
                 <Link
                   className={
-                    "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal " +
+                    "text-xs font-bold uppercase px-5 py-3 rounded block leading-normal " +
                     (openTab === 1
                       ? "text-white bg-orange-400"
                       : "text-blueGray-600 bg-white")
@@ -208,9 +206,6 @@ const Tabs = () => {
                                     width={250}
                                     height={250}
                                     alt="Food Image"
-                                    onClick={() => {
-                                      dispatch(getRecipeInfo(f.id));
-                                    }}
                                     className="cursor-pointer"
                                   />
                                   <p className="title">{f.title}</p>
@@ -230,9 +225,6 @@ const Tabs = () => {
                                     width={250}
                                     height={250}
                                     alt="Food Image"
-                                    onClick={() => {
-                                      dispatch(getRecipeInfo(f.id));
-                                    }}
                                     className="cursor-pointer"
                                   />
                                   <p className="title">{f.title}</p>
@@ -252,9 +244,6 @@ const Tabs = () => {
                                     width={250}
                                     height={250}
                                     alt="Food Image"
-                                    onClick={() => {
-                                      dispatch(getRecipeInfo(f.id));
-                                    }}
                                     className="cursor-pointer"
                                   />
                                   <p className="title">{f.title}</p>
@@ -274,9 +263,6 @@ const Tabs = () => {
                                     width={250}
                                     height={250}
                                     alt="Food Image"
-                                    onClick={() => {
-                                      dispatch(getRecipeInfo(f.id));
-                                    }}
                                     className="cursor-pointer"
                                   />
                                   <p className="title">{f.title}</p>
@@ -296,9 +282,6 @@ const Tabs = () => {
                                     width={250}
                                     height={250}
                                     alt="Food Image"
-                                    onClick={() => {
-                                      dispatch(getRecipeInfo(f.id));
-                                    }}
                                     className="cursor-pointer"
                                   />
                                   <p className="title">{f.title}</p>
@@ -318,9 +301,6 @@ const Tabs = () => {
                                     width={250}
                                     height={250}
                                     alt="Food Image"
-                                    onClick={() => {
-                                      dispatch(getRecipeInfo(f.id));
-                                    }}
                                     className="cursor-pointer"
                                   />
                                   <p>{f.title}</p>

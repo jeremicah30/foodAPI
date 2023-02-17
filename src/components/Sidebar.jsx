@@ -31,27 +31,29 @@ const Sidebar = () => {
       <div className="container">
         <div className=" flex  items-center py-1">
           <div className="sidebar--logo flex w-50">
-            <Image src={Logo} alt="Foodpals Logo" className="img2 " />
+            <Link href="/">
+              <Image src={Logo} alt="Foodpals Logo" className="img2 " />
+            </Link>
           </div>
 
           <div className="flex items-center w-50">
             <ul className="flex my-3">
-              <li>
+              <li className="nav-li">
                 <Link href="/" className="flex items-center link">
                   <span className="li-title text-base">Home</span>
                 </Link>
               </li>
-              <li>
+              <li className="nav-li">
                 <Link href="/" className="flex items-center link">
                   <span className="li-title text-base">Trending</span>
                 </Link>
               </li>
-              <li>
+              <li className="nav-li">
                 <Link href="/" className="flex items-center link">
                   <span className="li-title text-base">Services</span>
                 </Link>
               </li>
-              <li>
+              <li className="nav-li">
                 <Link href="/" className="flex items-center link">
                   <span className="li-title text-base">Credits</span>
                 </Link>
@@ -74,15 +76,10 @@ const Sidebar = () => {
                 </label>
 
                 {searchTerm && recipeNames.length > 0 && (
-                  <ul className="absolute bg-white">
-                    {recipeNames.map((recipeName) => (
-                      <li key={recipeName.id}>
-                        <Link
-                          href={`/recipe/${recipeName.id}`}
-                          onClick={() => {
-                            dispatch(getRecipeInfo(recipeName.id));
-                          }}
-                        >
+                  <ul className="absolute bg-white w-full shadow-md leading-10 z-20">
+                    {recipeNames?.map((recipeName) => (
+                      <li key={recipeName?.id}>
+                        <Link href={`/recipe/${recipeName.id}`}>
                           {recipeName.name}
                         </Link>
                       </li>

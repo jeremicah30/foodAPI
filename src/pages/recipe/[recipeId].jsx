@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useSelector } from "react-redux";
+
 import Image from "next/image";
-import { AiFillFire } from "react-icons/ai";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 const SingleRecipeInfo = () => {
-  const recipe = useSelector((state) => state.recipeInfo.recipeInfo);
   const [loading, setLoading] = useState(false);
   const [recipeData, setRecipeData] = useState(null);
   const [openTab, setOpenTab] = React.useState(1);
@@ -13,31 +13,43 @@ const SingleRecipeInfo = () => {
   const ingredients = recipeData?.extendedIngredients;
   const instructions = recipeData?.analyzedInstructions;
   const strippedText = summary?.replace(/(<([^>]+)>)/gi, "");
-
-  useEffect(() => {
-    getRecipe();
-  }, []);
+  const router = useRouter();
+  const { recipeId } = router.query;
 
   const getRecipe = async () => {
     setLoading(true);
     try {
       const response = await axios.get(
-        `https://api.spoonacular.com/recipes/${recipe}/information?apiKey=${process.env.NEXT_PUBLIC_APP_API_KEY}`
+        `https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=${process.env.NEXT_PUBLIC_APP_API_KEY}`
       );
       const recipeData = response.data;
       setRecipeData(recipeData);
       setLoading(false);
     } catch (error) {
       console.error(error);
+
+      // const errorElement = document.createElement("div");
+      // errorElement.innerText = "An error occurred. Please try again later.";
+      // document.body.appendChild(errorElement);
     }
   };
+
+  useEffect(() => {
+    if (recipeId !== undefined) {
+      getRecipe();
+    }
+  }, [recipeId]);
 
   console.log(recipeData, "ppp");
 
   if (recipeData) {
     return (
       <>
-        {!loading && (
+        {loading && recipeData === null ? (
+          <div>
+            <p>Helllloooo</p>
+          </div>
+        ) : (
           <div className="single-recipe " style={{ height: "100vh" }}>
             <div className="container">
               <div
@@ -84,7 +96,7 @@ const SingleRecipeInfo = () => {
                   </div>
                 </div>
 
-                <div className="right w-full flex flex-col  px-10 ">
+                <div className="right w-full flex flex-col p-10 ">
                   <div className="flex flex-wrap">
                     <div className="w-full">
                       <ul
@@ -149,7 +161,7 @@ const SingleRecipeInfo = () => {
                           </a>
                         </li>
                       </ul>
-                      <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
+                      <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded ">
                         <div className="px-4 py-5 flex-auto">
                           <div className="tab-content tab-space">
                             <div
@@ -171,7 +183,7 @@ const SingleRecipeInfo = () => {
                               <h2 className="pb-5">{`Steps in making ${recipeData.title}:`}</h2>
 
                               {instructions.map((i, index) => (
-                                <div key={index}>
+                                <div key={index} className="py-5">
                                   <h2>{i.name}</h2>
                                   <ol className="list-decimal px-10">
                                     {i.steps.map((s, index) => (
@@ -180,19 +192,137 @@ const SingleRecipeInfo = () => {
                                   </ol>
                                 </div>
                               ))}
+
+                              {"spoonacularSourceUrl" in recipeData ? (
+                                <Link href={recipeData.spoonacularSourceUrl}>
+                                  <span className="underline text-blue-700">
+                                    Click for detailed instructions and recipe
+                                    here
+                                  </span>
+                                </Link>
+                              ) : "sourceUrl" in recipeData ? (
+                                <Link href={recipeData.sourceUrl}>
+                                  <span className="underline text-blue-700">
+                                    Click for detailed instructions and recipe
+                                    here
+                                  </span>
+                                </Link>
+                              ) : null}
                             </div>
                             <div
                               className={openTab === 3 ? "block" : "hidden"}
                               id="link3"
                             >
-                              <p>
-                                Efficiently unleash cross-media information
-                                without cross-media value. Quickly maximize
-                                timely deliverables for real-time schemas.
-                                <br />
-                                <br /> Dramatically maintain clicks-and-mortar
-                                solutions without functional solutions.
-                              </p>
+                              <div class="relative overflow-x-auto shadow-md sm:rounded-lg sm:w-full md:w-full lg:w-50 m-auto">
+                                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                  <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                    <tr>
+                                      <th scope="col" class="px-6 py-3">
+                                        Additional Info
+                                      </th>
+                                      <th scope="col" class="px-6 py-3">
+                                        Value
+                                      </th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+                                      <th
+                                        scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                                      >
+                                        Cooking Minutes
+                                      </th>
+                                      <td class="px-6 py-4">
+                                        {recipeData.cookingMinutes}
+                                      </td>
+                                    </tr>
+                                    <tr class="border-b bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+                                      <th
+                                        scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                                      >
+                                        Glutten Free
+                                      </th>
+                                      {recipeData.glutenFree === true ? (
+                                        <td class="px-6 py-4">True</td>
+                                      ) : (
+                                        <td class="px-6 py-4">False</td>
+                                      )}
+                                    </tr>
+                                    <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+                                      <th
+                                        scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                                      >
+                                        Preparation Minutes
+                                      </th>
+                                      <td class="px-6 py-4">
+                                        {recipeData.preparationMinutes}
+                                      </td>
+                                    </tr>
+                                    <tr class="border-b bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+                                      <th
+                                        scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                                      >
+                                        Price Per Serving
+                                      </th>
+                                      <td class="px-6 py-4">
+                                        {recipeData.pricePerServing}
+                                      </td>
+                                    </tr>
+                                    <tr class="border-b bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+                                      <th
+                                        scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                                      >
+                                        Ready in Minutes
+                                      </th>
+                                      <td class="px-6 py-4">
+                                        {recipeData.readyInMinutes}
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <th
+                                        scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                                      >
+                                        Servings
+                                      </th>
+                                      <td class="px-6 py-4">
+                                        {recipeData.servings}
+                                      </td>
+                                    </tr>
+                                    <tr class="border-b bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+                                      <th
+                                        scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                                      >
+                                        Vegan
+                                      </th>
+                                      {recipeData.vegan === true ? (
+                                        <td class="px-6 py-4">True</td>
+                                      ) : (
+                                        <td class="px-6 py-4">False</td>
+                                      )}
+                                    </tr>
+                                    <tr class="border-b bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+                                      <th
+                                        scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                                      >
+                                        Vegetarian
+                                      </th>
+                                      {recipeData.vegetarian === true ? (
+                                        <td class="px-6 py-4">True</td>
+                                      ) : (
+                                        <td class="px-6 py-4">False</td>
+                                      )}
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -202,12 +332,6 @@ const SingleRecipeInfo = () => {
                 </div>
               </div>
             </div>
-          </div>
-        )}
-
-        {loading && (
-          <div>
-            <p>Helllloooo</p>
           </div>
         )}
       </>
