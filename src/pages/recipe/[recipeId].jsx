@@ -51,7 +51,7 @@ const SingleRecipeInfo = () => {
           </div>
         ) : (
           <div className="single-recipe bg-white" style={{ height: "100vh" }}>
-            <div className="container py-12">
+            <div className="container py-10">
               <div
                 className="inner bg-white py-10 rounded-md"
                 style={{
