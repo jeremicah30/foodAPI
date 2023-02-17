@@ -10,6 +10,7 @@ const Sidebar = () => {
   const dispatch = useDispatch();
   const [searchTerm, setSearchTerm] = useState("");
   const [recipeNames, setRecipeNames] = useState([]);
+  const [clicked, setClicked] = useState(false);
   const router = useRouter();
 
   useEffect(() => {

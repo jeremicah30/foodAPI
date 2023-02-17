@@ -27,10 +27,6 @@ const SingleRecipeInfo = () => {
       setLoading(false);
     } catch (error) {
       console.error(error);
-
-      // const errorElement = document.createElement("div");
-      // errorElement.innerText = "An error occurred. Please try again later.";
-      // document.body.appendChild(errorElement);
     }
   };
 
@@ -54,16 +50,16 @@ const SingleRecipeInfo = () => {
             <p>Helllloooo</p>
           </div>
         ) : (
-          <div className="single-recipe " style={{ height: "100vh" }}>
-            <div className="container">
+          <div className="single-recipe bg-white" style={{ height: "100vh" }}>
+            <div className="container py-12">
               <div
-                className="inner bg-white py-10 my-10 rounded-md"
+                className="inner bg-white py-10 rounded-md"
                 style={{
                   boxShadow: "  0px 0px 16px -2px rgba(189,189,189,0.75",
                 }}
               >
                 <div className="left w-full bg-white flex  items-center px-20 pb-10">
-                  <div className="w-40">
+                  <div className="w-40 mr-8">
                     <Image
                       src={recipeData.image}
                       width={550}

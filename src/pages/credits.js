@@ -18,13 +18,14 @@ const credits = () => {
           style={{
             fontFamily: "Montserrat",
             fontSize: "1.5rem",
-            fontWeight: "700",
+            fontWeight: "600",
           }}
         >
           <Image src={Gify} alt="Thanks GIF" />
 
           <p>
-            Special thanks to the following in using their free resources! 🙏🤲
+            Huge thanks to the following for allowing me to use their free
+            resources! 🙏🤲
           </p>
           <ul>
             <li>
