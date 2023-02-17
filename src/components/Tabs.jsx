@@ -186,7 +186,7 @@ const Tabs = () => {
             </ul>
 
             <div className="relative min-w-0 break-words mb-6 shadow-lg rounded">
-              <div className="px-4 py-5 grid gap-4 grid-cols-4 ">
+              <div className="px-4 py-5 grid gap-4 md:grid-cols-4 base:grid-cols-2">
                 {Array.isArray(foodData)
                   ? foodData.map((f) => {
                       return (

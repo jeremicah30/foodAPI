@@ -4,10 +4,13 @@ import Image from "next/image";
 import { useDispatch } from "react-redux";
 import { Logo, LogoSmall } from "public";
 import { getRecipeInfo } from "@/Redux/recipeInfo";
+import { useRouter } from "next/router";
+
 const Sidebar = () => {
   const dispatch = useDispatch();
   const [searchTerm, setSearchTerm] = useState("");
   const [recipeNames, setRecipeNames] = useState([]);
+  const router = useRouter();
 
   useEffect(() => {
     const fetchAutocompleteResults = async () => {
@@ -38,23 +41,37 @@ const Sidebar = () => {
 
           <div className="flex items-center w-50">
             <ul className="flex my-3">
-              <li className="nav-li">
+              <li
+                className={`nav-li ${router.pathname === "/" ? "active" : ""}`}
+              >
                 <Link href="/" className="flex items-center link">
                   <span className="li-title text-base">Home</span>
                 </Link>
               </li>
-              <li className="nav-li">
-                <Link href="/" className="flex items-center link">
+              <li
+                className={`nav-li ${
+                  router.pathname === "/trending" ? "active" : ""
+                }`}
+              >
+                <Link href="/trending" className="flex items-center link">
                   <span className="li-title text-base">Trending</span>
                 </Link>
               </li>
-              <li className="nav-li">
-                <Link href="/" className="flex items-center link">
+              <li
+                className={`nav-li ${
+                  router.pathname === "/services" ? "active" : ""
+                }`}
+              >
+                <Link href="/services" className="flex items-center link">
                   <span className="li-title text-base">Services</span>
                 </Link>
               </li>
-              <li className="nav-li">
-                <Link href="/" className="flex items-center link">
+              <li
+                className={`nav-li ${
+                  router.pathname === "/credits" ? "active" : ""
+                }`}
+              >
+                <Link href="/credits" className="flex items-center link">
                   <span className="li-title text-base">Credits</span>
                 </Link>
               </li>

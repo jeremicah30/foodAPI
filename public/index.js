@@ -12,3 +12,4 @@ export { default as Slide2 } from "../public/slide2.jpg";
 export { default as Slide3 } from "../public/slide3.jpg";
 export { default as Slide4 } from "../public/slide4.jpg";
 export { default as Slide5 } from "../public/slide5.jpg";
+export { default as Gify } from "../public/gif.gif";

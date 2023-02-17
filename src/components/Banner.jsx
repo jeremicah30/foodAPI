@@ -28,13 +28,35 @@ const Banner = () => {
                   <p className="z-8 text-lg uppercase">
                     Make every cooking easier
                   </p>
-                  <span>ready-made recipes for you</span>
+                  <span>ready-made recipes just for you</span>
                 </div>
               </SwiperSlide>
-              <SwiperSlide className="parent bg-slide2"></SwiperSlide>
-              <SwiperSlide className="parent bg-slide3"></SwiperSlide>
-              <SwiperSlide className="parent bg-slide4"></SwiperSlide>
-              <SwiperSlide className="parent bg-slide5"></SwiperSlide>
+              <SwiperSlide className="parent bg-slide2">
+                <div className="img text-center">
+                  <p className="z-8 text-lg uppercase">Easy to go recipes</p>
+                  <span>Lorem ipsum dolor sit amet.</span>
+                </div>
+              </SwiperSlide>
+              <SwiperSlide className="parent bg-slide3">
+                <div className="img text-center">
+                  <p className="z-8 text-lg uppercase">
+                    Cheap but deliouscious
+                  </p>
+                  <span>Lorem ipsum dolor sit amet.</span>
+                </div>
+              </SwiperSlide>
+              <SwiperSlide className="parent bg-slide4">
+                <div className="img text-center">
+                  <p className="z-8 text-lg uppercase">Quality made recipes</p>
+                  <span>Lorem ipsum dolor sit amet.</span>
+                </div>
+              </SwiperSlide>
+              <SwiperSlide className="parent bg-slide5">
+                <div className="img text-center">
+                  <p className="z-8 text-lg uppercase">Easy to go recipes</p>
+                  <span>Lorem ipsum dolor sit amet.</span>
+                </div>
+              </SwiperSlide>
             </Swiper>
           </div>
         </div>

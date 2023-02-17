@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-
+import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -45,6 +45,10 @@ const SingleRecipeInfo = () => {
   if (recipeData) {
     return (
       <>
+        <Head>
+          <title>Recipe Info</title>
+          <link rel="icon" href="/tab-logo.svg" />
+        </Head>
         {loading && recipeData === null ? (
           <div>
             <p>Helllloooo</p>
