@@ -36,7 +36,6 @@ export default function Home({ apiKey }) {
       <main>
         <Banner />
         <Tabs />
-        <Trending />
       </main>
     </>
   );
