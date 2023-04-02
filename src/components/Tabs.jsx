@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import { setFoodType } from "../Redux/foodType";
 import { getRecipeInfo } from "@/Redux/recipeInfo";
-import { Pasta, Salad, Cake, Burger2, Veggie, Fruits } from "public";
+import { TabData } from "@/datas/TabData";
 
 const Tabs = () => {
   const dispatch = useDispatch();
@@ -12,11 +12,15 @@ const Tabs = () => {
   const menuItems = useSelector((state) => state.foodMenu.menuItems);
   const foodData = menuItems.results;
 
+  console.log("tabdata", TabData);
+  console.log("foodata", foodData);
+
   const handleFoodTypeChange = (type) => {
+    console.log("o77o", type);
     dispatch(setFoodType(type));
   };
 
-  console.log("oo", menuItems);
+  console.log("oo", setFoodType);
 
   return (
     <>
@@ -27,162 +31,37 @@ const Tabs = () => {
               className="flex justify-evenly mb-0 list-none flex-wrap pt-3 pb-4 flex-row"
               role="tablist"
             >
-              <li className="-mb-px mr-2 last:mr-0  text-center">
-                <Link
-                  className={
-                    "text-xs font-bold uppercase px-5 py-3 rounded block leading-normal " +
-                    (openTab === 1
-                      ? "text-white bg-orange-400"
-                      : "text-blueGray-600 bg-white")
-                  }
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setOpenTab(1);
-                    handleFoodTypeChange("pasta");
-                  }}
-                  data-toggle="tab"
-                  href="#link1"
-                  role="tablist"
+              {TabData.map((data) => (
+                <li
+                  className="-mb-px mr-2 last:mr-0  text-center"
+                  key={data.id}
                 >
-                  <Image
-                    src={Pasta}
-                    alt="Pasta Image"
-                    width={150}
-                    className="image-title"
-                  />
-                  <p>Pasta</p>
-                </Link>
-              </li>
-              <li className="-mb-px mr-2 last:mr-0 text-center">
-                <Link
-                  className={
-                    "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal " +
-                    (openTab === 2
-                      ? "text-white bg-orange-400"
-                      : "text-blueGray-600 bg-white")
-                  }
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setOpenTab(2);
-                    handleFoodTypeChange("burger");
-                  }}
-                  data-toggle="tab"
-                  href="#link2"
-                  role="tablist"
-                >
-                  <Image
-                    src={Burger2}
-                    alt="Burger2 Image"
-                    width={150}
-                    className="image-title"
-                  />
-                  <p>Burger</p>
-                </Link>
-              </li>
-              <li className="-mb-px mr-2 last:mr-0 text-center">
-                <Link
-                  className={
-                    "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal " +
-                    (openTab === 3
-                      ? "text-white bg-orange-400"
-                      : "text-blueGray-600 bg-white")
-                  }
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setOpenTab(3);
-                    handleFoodTypeChange("cake");
-                  }}
-                  data-toggle="tab"
-                  href="#link3"
-                  role="tablist"
-                >
-                  <Image
-                    src={Cake}
-                    alt="Cake Image"
-                    width={150}
-                    className="image-title"
-                  />
-                  <p>Cake</p>
-                </Link>
-              </li>
-              <li className="-mb-px mr-2 last:mr-0  text-center">
-                <Link
-                  className={
-                    "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal " +
-                    (openTab === 4
-                      ? "text-white bg-orange-400"
-                      : "text-blueGray-600 bg-white")
-                  }
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setOpenTab(4);
-                    handleFoodTypeChange("salad");
-                  }}
-                  data-toggle="tab"
-                  href="#link4"
-                  role="tablist"
-                >
-                  <Image
-                    src={Salad}
-                    alt="Salad Image"
-                    width={150}
-                    className="image-title"
-                  />
-                  <p>Salad</p>
-                </Link>
-              </li>
-              <li className="-mb-px mr-2 last:mr-0 text-center">
-                <Link
-                  className={
-                    "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal " +
-                    (openTab === 5
-                      ? "text-white bg-orange-400"
-                      : "text-blueGray-600 bg-white")
-                  }
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setOpenTab(5);
-                    handleFoodTypeChange("fruit");
-                  }}
-                  data-toggle="tab"
-                  href="#link5"
-                  role="tablist"
-                >
-                  <Image
-                    src={Fruits}
-                    alt="Fruits Image"
-                    width={150}
-                    className="image-title"
-                  />
-                  <p>Fruits</p>
-                </Link>
-              </li>
-              <li className="-mb-px mr-2 last:mr-0 text-center">
-                <Link
-                  className={
-                    "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal " +
-                    (openTab === 6
-                      ? "text-white bg-orange-400"
-                      : "text-blueGray-600 bg-white")
-                  }
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setOpenTab(6);
-                    handleFoodTypeChange("vegetable");
-                  }}
-                  data-toggle="tab"
-                  href="#link6"
-                  role="tablist"
-                >
-                  <Image
-                    src={Veggie}
-                    alt="Veggie Image"
-                    width={150}
-                    className="image-title"
-                  />
-                  <p>Veggie</p>
-                </Link>
-              </li>
+                  <Link
+                    className={
+                      "text-xs font-bold uppercase px-5 py-3 rounded block leading-normal " +
+                      (openTab === data.tabNumber
+                        ? "text-white bg-orange-400"
+                        : "text-blueGray-600 bg-white")
+                    }
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setOpenTab(data.tabNumber);
+                      handleFoodTypeChange(data.type);
+                    }}
+                    data-toggle="tab"
+                    href={data.link}
+                    role="tablist"
+                  >
+                    <Image
+                      src={data.image}
+                      alt={`${data.name} Image`}
+                      width={150}
+                      className="image-title m-auto"
+                    />
+                    <p>{data.name}</p>
+                  </Link>
+                </li>
+              ))}
             </ul>
 
             <div className="relative min-w-0 break-words mb-6 shadow-lg rounded">
